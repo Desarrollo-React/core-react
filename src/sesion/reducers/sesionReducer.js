@@ -1,7 +1,8 @@
 export const initialState = {
   usuario : null,
   autenticado: false,
-  opcionmenu:''
+  opcionmenu:'',
+  idEmpresa:0
 }
 
 const sesionReducer = (state = initialState, action) => {
@@ -11,27 +12,26 @@ const sesionReducer = (state = initialState, action) => {
         ...state,
         usuario: action.sesion,
         autenticado: action.autenticado,
-        opcionmenu: action.opcionmenu
+        opcionmenu: action.opcionmenu,
+        idEmpresa: action.idEmpresa
       };
     case "CAMBIAR_SESION":
       return {
         ...state,
         usuario: action.nuevoUsuario,
         autenticado: action.autenticado,
-        opcionmenu: action.opcionmenu
+        opcionmenu: action.opcionmenu,
+        idEmpresa: action.idEmpresa
       };
     case "SALIR_SESION":
       return {
         ...state,
         usuario: action.nuevoUsuario,
         autenticado: action.autenticado,
-        opcionmenu: action.opcionmenu
+        opcionmenu: action.opcionmenu,
+        idEmpresa: action.idEmpresa
       };
-      case "OPCION_MENU":
-      return {
-        ...state,
-        opcionmenu: action.opcionmenu
-      };
+     
     default:
       return state;
   }

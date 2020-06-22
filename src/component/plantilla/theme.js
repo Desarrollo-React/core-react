@@ -21,7 +21,7 @@ const theme = createMuiTheme({
        
     },
 
-    spacing: 10
+    spacing: 8
 
 });
 

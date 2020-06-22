@@ -18,6 +18,7 @@ import logoTemp from '../../../assets/img/sinlogo.png';
 import { withRouter } from "react-router-dom";
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import Constantes from '../../../constantes/Sistema';
 const styles = theme => ({
   sectionDesktop: {
     display: "none",
@@ -62,6 +63,7 @@ class BarSession extends Component {
     const { firebase } = this.state;
     const [{ sesion }, dispatch] = this.context;
 
+   
     salirSesion(dispatch, firebase).then(success => {
       this.props.history.push("/login");
     });
@@ -89,7 +91,7 @@ class BarSession extends Component {
     const { usuario } = sesion;
     const { firebase } = this.state;
 
-    let textoUsuario = usuario.nombreEtiqueta;
+    let textoUsuario = usuario.nombreUsuario;
 
     let opcionmenu ='';
     
@@ -136,7 +138,7 @@ class BarSession extends Component {
             <i className="material-icons">menu</i>
           </IconButton>
 
-          <Typography variant="h6">MI AGUA</Typography>  
+    <Typography variant="h6">{Constantes.NOMBRE_SISTEMA}</Typography>  
                     <div className={classes.grow}></div>
           <div className={classes.sectionDesktop}>
             <Button color="inherit" >

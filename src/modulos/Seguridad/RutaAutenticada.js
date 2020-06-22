@@ -7,21 +7,21 @@ function RutaAutenticada({ component: Component, firebase, ...rest }) {
 
   const [{ autenticado, sesion, opcionmenu }, dispatch] = useStateValue();
 
-  if (firebase.auth.currentUser !== null && !sesion) {
+ /* if (firebase.auth.currentUser !== null && !sesion) {
     firebase.db
       .collection(Constantes.COLECCION_PRINCIPAL)
       .doc(firebase.auth.currentUser.uid)
       .get()
       .then(doc => {
-        const usuarioDB = doc.data();
+        const usuarioDB = doc.data();*/
       /*  dispatch({
           type: "INICIAR_SESION",
           sesion: usuarioDB,
           autenticado: true,
           opcion: rest.opcionmenu
         });*/
-      });
-  }
+     // });
+ // }
   
 
 

@@ -22,6 +22,7 @@ import { openMensajePantalla } from '../../sesion/actions/snackbarAction';
 import { useStateValue } from '../../sesion/store';
 import FormControl from '@material-ui/core/FormControl';
 import Backdrop from '@material-ui/core/Backdrop';
+import Constantes from '../../constantes/Sistema';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -146,17 +147,45 @@ function Login(props) {
     e.preventDefault();
     const { email, password } = usuario;
 
-    let callback = await iniciarSesion(dispatch, firebase, email, password);
+    iniciarSesion(dispatch, firebase, email, password).then(async dbUsuario => {
+      if (dbUsuario.identificacion === password) {
+        props.history.push("/cambiarclave");
+      } else {
+        let empresas = await dbUsuario.empresa;
+        //Si el usuario esta asignado más de una empresa debe seleccionar la empresa a trabajar
+        if (empresas.length === 1) {
+          dispatch({
+            type: Constantes.ACTION_TIPO.INICIAR_SESION,
+            sesion: dbUsuario,
+            idEmpresa: empresas[0],
+            autenticado: true
+          });
+          props.history.push("/consola");
+        } else {
+          props.history.push("/empresas");
+        }
+      }
 
-    if (callback.status) {
-      props.history.push("/");
-    } else {
+    }).catch(error => {
+      console.log("Error al buscar los datos desde firebase", error);
       openMensajePantalla(dispatch, {
         open: true,
-        mensaje: callback.mensaje.message,
+        mensaje: error.mensaje.message,
         severity: "error"
       });
-    }
+    });
+
+    //let callback = await iniciarSesion(dispatch, firebase, email, password);
+
+    /*  if (callback.status) {
+        props.history.push("/");
+      } else {
+        openMensajePantalla(dispatch, {
+          open: true,
+          mensaje: callback.mensaje.message,
+          severity: "error"
+        });
+      }*/
   }
 
   const cambiarClave = () => {
@@ -227,10 +256,10 @@ function Login(props) {
               className={classes.submit}
             >
               Ingresar
-          </Button> 
+          </Button>
             <Grid container>
               <Grid item>
-                <Link className={classes.enlace} component={RouterLink} to="/jaap" variant="body2">
+                <Link className={classes.enlace} component={RouterLink} to="/registrar" variant="body2">
                   {"No tiene una cuenta? Crear nueva cuenta"}
                 </Link>
               </Grid>
