@@ -8,7 +8,7 @@
     "@material-ui/lab": "^4.0.0-alpha.44",
     "@material-ui/styles": "^4.9.0",
     "@react-pdf/renderer": "^2.0.0-beta.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "canvas": "^2.6.1",
     "eslint-plugin-react-hooks": "0.0.0-5de5b6150",
     "firebase": "^7.14.4",
