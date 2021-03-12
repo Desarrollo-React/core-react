@@ -22,7 +22,7 @@
     "rainyday.js": "^0.1.7",
     "react": "^16.12.0",
     "react-barcode": "^1.4.0",
-    "react-dev-utils": "^10.2.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.12.0",
     "react-images-upload": "^1.2.8",
     "react-redux": "^7.2.0",
