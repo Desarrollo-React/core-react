@@ -36,7 +36,7 @@
     "rxjs": "^6.5.4",
     "uuid": "^3.4.0",
     "validator": "^12.2.0",
-    "xmldom": "^0.3.0"
+    "xmldom": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
